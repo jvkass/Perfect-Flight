@@ -1,5 +1,3 @@
-import { geradorNome } from 'gerador-nome';
-import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
 interface Player {
@@ -8,33 +6,18 @@ interface Player {
     amount: number;
 }
 
-export function PlayersTableEliminated() {
+interface PlayersTableProps{
+    players: Player[];
+}
 
-    const [players, setPlayers] = useState<Player[]>([]);
-
-    useEffect(() => {
-
-        const player: Player = {
-            id: 1,
-            name: geradorNome(),
-            amount: 0
-        };
-
-        setPlayers([
-            ...players, player
-        ]);
-    }, [])
-
-    // function handleStart() {
-
-    // }
+export function PlayersTableEliminated({players}:PlayersTableProps) {
 
     return (
         <div className={styles.heroTableContainer}>
             <table>
                 <thead>
                     <tr>
-                        <th>Player Eliminated</th>
+                        <th>Players Eliminated</th>
                     </tr>
                 </thead>
 
