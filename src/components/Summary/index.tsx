@@ -11,13 +11,13 @@ export function Summary({IsRoundsPlayed,IsVotesFinished}:SummaryProps) {
         <div className={styles.summaryContainer}>
             <div>
                 <header>
-                    <p>Número de rodadas jogadas</p>
+                    <p>Number of rounds played</p>
                 </header>
                 <strong>{IsRoundsPlayed}</strong>
             </div>
             <div>                
                 <header>
-                    <p>Número de votos pelo fim do jogo da rodada anterior</p>
+                    <p>Number of endgame votes from the previous round</p>
                 </header>
                 <strong>{IsVotesFinished}</strong>
             </div>
