@@ -23,8 +23,20 @@ export const Game: React.FC = () => {
 
     function handleStartButton() {        
         if (((players.length / 2) < votesFinished) || players.length === 0) {
-            receavePerPlayers();
-            return alert('Jogo Acabou');
+            let receivePlayers = receavePerPlayers();
+            if(receivePlayers===Infinity){
+                receivePlayers=0;
+            }
+
+            return alert(`Jogo Acabou 
+            O total de rodadas jogadas: ${roundsPlayed}
+            O número total de jogadores remanescentes: ${players.length}
+            O número de jogadores eliminados: ${playersEliminated.length}
+            O número de jogadores que votaram pelo fim do jogo: ${votesFinished}
+            O valor de dinheiro total ganho por cada jogador remanescente:${new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(receivePlayers)}}`);
         }
         //  Calculando possível eliminado e repassando os fundos
         players.forEach((player, i) => {
@@ -87,6 +99,8 @@ export const Game: React.FC = () => {
             });
 
         });
+
+        return receivePerPlayers;
     }
 
     return (
