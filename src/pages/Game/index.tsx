@@ -22,15 +22,15 @@ export const Game: React.FC = () => {
     const [playersEliminated, setPlayersEliminated] = useState<Player[]>([]);
 
     function handleStartButton() {
-        //  Calculando possível eliminado
+        //  Calculando possível eliminado e repassando os fundos
         players.forEach((player, i) => {
             const percentageEliminated = Math.random();
 
             if (percentageEliminated <= 0.42) {
-                
+
                 var listPlayers = players;
 
-                listPlayers.splice(i,1);
+                listPlayers.splice(i, 1);
 
                 setPlayers(() => {
                     return [...listPlayers];
@@ -38,21 +38,29 @@ export const Game: React.FC = () => {
                 setPlayersEliminated((prev) => {
                     return [...prev, player];
                 });
+                setFund((prev) => {
+                    let fundActual = prev + player.amount;
+                    return fundActual;
+                });
             }
         });
 
-
-
-        setFund(0);
-
-        console.log(roundsPlayed);
-        let rodadaAtual = roundsPlayed;
-
-        rodadaAtual +=1;
+        let rodadaAtual = roundsPlayed + 1;
 
         setRoundsPlayed(rodadaAtual);
+        //  Calculando votos para encerramento
         setVotesFinished(0);
 
+        players.forEach(() => {
+            const percentageVotesFinished = Math.random();
+
+            if (percentageVotesFinished <= 0.30) {
+                setVotesFinished((prev) => {
+                    let VotesFinishedActual = prev + 1;
+                    return VotesFinishedActual;
+                });
+            }
+        });
     }
 
     return (
