@@ -1,8 +1,11 @@
 import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
 
+interface HeaderProps {
+    IsFund:number;
+}
 
-export function Header() {
+export function Header({IsFund}:HeaderProps) {
 
     return (
         <header className={styles.headerContainer}>
@@ -12,7 +15,11 @@ export function Header() {
                     <Link className='' to='/game'>Game</Link>
                 </nav>
 
-                <label>Total Amount: $420,000</label>
+                <label>Prize fund: 
+                {new Intl.NumberFormat('pt-BR', {
+                                    style: 'currency',
+                                    currency: 'USD'
+                                }).format(IsFund)}</label>
             </div>
         </header>
     );

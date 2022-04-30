@@ -1,7 +1,11 @@
-import React from "react";
 import styles from "./styles.module.scss"
 
-export const Summary: React.FC = () => {
+interface SummaryProps{
+    IsRoundsPlayed:number;
+    IsVotesFinished:number;
+}
+
+export function Summary({IsRoundsPlayed,IsVotesFinished}:SummaryProps) {
 
     return (
         <div className={styles.summaryContainer}>
@@ -9,13 +13,13 @@ export const Summary: React.FC = () => {
                 <header>
                     <p>Número de rodadas jogadas</p>
                 </header>
-                <strong>15</strong>
+                <strong>{IsRoundsPlayed}</strong>
             </div>
             <div>                
                 <header>
                     <p>Número de votos pelo fim do jogo da rodada anterior</p>
                 </header>
-                <strong>10</strong>
+                <strong>{IsVotesFinished}</strong>
             </div>
         </div>
     );

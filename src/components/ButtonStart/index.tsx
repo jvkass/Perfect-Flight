@@ -8,7 +8,7 @@ export function ButtonStart({IsClick}:ButtonStartProps) {
 
     return (
             <div className={styles.Container}>
-                <button onClick={IsClick}>Start Game</button>
+                <button onClick={IsClick}>Start Round</button>
             </div>
     );
 }
