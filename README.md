@@ -2,6 +2,10 @@
 
 Esse desafio é uma simulação do Jogo da Lula - um desafio competitivo pela sobrevivência, onde os sobreviventes dividem uma grande quantia em dinheiro
 
+## Execução do projeto
+
+Para execução do projeto, apenas deve se executar o comando `yarn start` para que se possa interagir com a página web e começar o jogo.
+
 ## Regras
 
 O jogo começa com 69 jogadores. cada jogador possui um prêmio de $420,000. sempre que um jogador e eliminado do jogo, seu prêmio é somado aos fundos do prêmio.
