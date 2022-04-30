@@ -21,7 +21,11 @@ export const Game: React.FC = () => {
     const [players, setPlayers] = useState<Player[]>(jsonPlayers)
     const [playersEliminated, setPlayersEliminated] = useState<Player[]>([]);
 
-    function handleStartButton() {
+    function handleStartButton() {        
+        if (((players.length / 2) < votesFinished) || players.length === 0) {
+            receavePerPlayers();
+            return alert('Jogo Acabou');
+        }
         //  Calculando possível eliminado e repassando os fundos
         players.forEach((player, i) => {
             const percentageEliminated = Math.random();
@@ -45,6 +49,7 @@ export const Game: React.FC = () => {
             }
         });
 
+
         let rodadaAtual = roundsPlayed + 1;
 
         setRoundsPlayed(rodadaAtual);
@@ -60,6 +65,27 @@ export const Game: React.FC = () => {
                     return VotesFinishedActual;
                 });
             }
+
+        });
+    }
+
+    function receavePerPlayers() {
+        let receivePerPlayers = fund / players.length;
+
+        players.forEach((_player, i) => {
+
+            var listPlayers = players;
+
+            listPlayers[i].amount = listPlayers[i].amount + receivePerPlayers;
+
+            setPlayers(() => {
+                return [...listPlayers];
+            });;
+            setFund((prev) => {
+                let fundActual = prev - receivePerPlayers;
+                return fundActual;
+            });
+
         });
     }
 
